@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ApiService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ApiService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AuthService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/AuthService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EmailSender.main.iml" filepath="$PROJECT_DIR$/.idea/modules/EmailSender.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GateWay.main.iml" filepath="$PROJECT_DIR$/.idea/modules/GateWay.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Pastebin microservices.iml" filepath="$PROJECT_DIR$/.idea/Pastebin microservices.iml" />
+    </modules>
+  </component>
+</project>

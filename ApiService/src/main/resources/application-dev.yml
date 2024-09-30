@@ -1,0 +1,58 @@
+server:
+  port: 8763
+
+spring:
+  application:
+    name: api-service
+  # Dev profile configuration
+  # PostgreSQL Configuration
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://dpg-co1i2h6d3nmc73a0nvgg-a.frankfurt-postgres.render.com/apidb}
+    username: ${DB_USERNAME:user}
+    password: ${DB_PASSWORD:ADWGWfigQvBAIPLEon7BquFCBWvgqg0v}
+
+  # JPA and Hibernate setup for PostgreSQL
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  # Flyway Configuration
+  flyway:
+    url: ${DB_URL:jdbc:postgresql://dpg-co1i2h6d3nmc73a0nvgg-a.frankfurt-postgres.render.com/apidb}
+    user: ${DB_USERNAME:user}
+    password: ${DB_PASSWORD:ADWGWfigQvBAIPLEon7BquFCBWvgqg0v}
+
+  kafka:
+    producer:
+      bootstrap-servers: ${KAFKA_HOST_NAME:localhost:9092}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        acks: all
+        retries: 5
+        retry.backoff.ms: 1000
+        max.block.ms: 20000
+        delivery.timeout.ms: 30000
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:https://eurekaserver-8cl4.onrender.com/eureka}
+  instance:
+    preferIpAddress: true
+
+app:
+  kafka:
+    topic-name: mail-messages
+    partitions-count: 3
+    replication-factor: 1
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

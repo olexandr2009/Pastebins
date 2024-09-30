@@ -1,0 +1,32 @@
+server:
+  port: 8769
+
+spring:
+  application:
+    name: auth-service
+  # Dev profile configuration
+  # PostgreSQL Configuration
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://dpg-co1i2h6d3nmc73a0nvgg-a.frankfurt-postgres.render.com/authdb}
+    username: ${DB_USERNAME:user}
+    password: ${DB_PASSWORD:ADWGWfigQvBAIPLEon7BquFCBWvgqg0v}
+  # Flyway Configuration
+  flyway:
+    url: ${DB_URL:jdbc:postgresql://dpg-co1i2h6d3nmc73a0nvgg-a.frankfurt-postgres.render.com/authdb}
+    user: ${DB_USERNAME:user}
+    password: ${DB_PASSWORD:ADWGWfigQvBAIPLEon7BquFCBWvgqg0v}
+  # JPA and Hibernate setup for PostgreSQL
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:https://eurekaserver-8cl4.onrender.com/eureka}
+  instance:
+    preferIpAddress: true

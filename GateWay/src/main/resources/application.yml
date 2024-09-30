@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: gate-way
+  cloud:
+    gateway:
+      default-filters:
+        - name: LoggingFilter
+      routes:
+        - id: email-sender
+          uri: lb://email-sender
+          predicates:
+            - Path=/
+          filters:
+            - AuthorizationFilter
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/v1/auth/*
+#        - id: lb://api-service
+#          uri: http://localhost:8763/
+#          predicates:
+#            - Path=/*
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+
+app:
+  jwt:
+    secret: kEwrgsdfsfaadaeafaf
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:https://eurekaserver-8cl4.onrender.com/eureka}
+  instance:
+    preferIpAddress: true
